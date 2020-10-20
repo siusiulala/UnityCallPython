@@ -40,8 +40,11 @@ public class PythonStarter : MonoBehaviour
         {
             Texture2D texture = new Texture2D(10, 10);
             texture.LoadImage(imgData);
-
-            rawImage.texture = texture;
+            if (CheckIfImageExists(texture))
+            {
+                rawImage.texture = texture;
+            }
+            
         }
    
     }
@@ -81,4 +84,9 @@ public class PythonStarter : MonoBehaviour
         //pyProcess.WaitForExit();
         //pyProcess.Close();
     }
+
+	bool CheckIfImageExists(Texture imageToCheck)
+	{
+		return imageToCheck.width > 10 && imageToCheck.height > 10;
+	}
 }
